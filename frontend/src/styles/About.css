@@ -1,0 +1,151 @@
+.story-container 
+{
+  margin: 32px auto 24px auto;
+  padding: 36px 32px 20px 32px;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(70, 70, 100, 0.06);
+  max-width: 1050px;
+}
+
+.story-title 
+{
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: orange;
+}
+
+.story-desc 
+{
+  font-size: 1.1em;
+  color: whitesmoke;
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+.about-container 
+{
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.about-title 
+{
+  font-size: 25px;
+  color: orange;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: -.5px;
+}
+
+.about-desc 
+{
+  font-size: 1.18em;
+  color: whitesmoke;
+  margin-bottom: 40px;
+}
+
+.features-row 
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.feature-card 
+{
+  background:darkcyan;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(80,80,120,0.07);
+  padding: 24px 18px;
+  flex: 1 1 210px;
+  min-width: 200px;
+  max-width: 230px;
+  text-align: center;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-icon 
+{
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+}
+
+.feature-icon.wide-selection { background: #e5f1fc; }
+.feature-icon.quality-assured { background: #e7fbe5; }
+.feature-icon.customer-first { background: #fff3e5; }
+.feature-icon.great-deals { background: #ffe5ec; }
+.feature-icon.fast-shipping { background: #e8f7ff; }
+.feature-icon.secure-payments { background: #f5ebe7; }
+
+.feature-title 
+{
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #0a1a36;
+}
+
+.feature-desc 
+{
+  color: whitesmoke;
+  font-size: 1em;
+  margin: 0;
+}
+
+.community-container 
+{
+  border-radius: 16px;
+  max-width: 1100px;
+  margin: 32px auto 0 auto;
+  text-align: center;
+  padding: 56px 0 40px 0;
+  color: #fff;
+}
+
+.community-title 
+{
+  font-size: 2.2em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: orange;
+}
+
+.community-desc 
+{
+  font-size: 1.18em;
+  margin-bottom: 28px;
+}
+
+.community-btn 
+{
+  background: #fa9900;
+  color: whitesmoke;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 12px 34px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,80,0.06);
+  transition: background 0.18s, color 0.18s;
+}
+
+.community-btn:hover 
+{
+  transform: translateY(-2px);
+}

@@ -1,0 +1,158 @@
+.order-section + .order-section 
+{
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.order-header 
+{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.order-id 
+{
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.order-date 
+{
+  margin: 2px 0 0;
+  color: white;
+  font-size: 18px;
+}
+
+.order-header-total 
+{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.order-page 
+{
+  max-width: 1100px;
+  margin: 36px auto 56px;
+  padding: 0 16px;
+  background: linear-gradient(180deg, #10244d, #0b1b3a);
+  border-radius: 20px;
+}
+
+.order-title 
+{
+  margin: 0 0 16px;
+  font-size: 28px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.order-wrap
+{
+  background: transparent; 
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.order-item 
+{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: none;
+}
+
+.order-item + .order-item 
+{
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 12px;
+}
+
+.order-image 
+{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #e5e7eb;
+  box-shadow: none;
+}
+
+.order-info 
+{
+  display: grid;
+  gap: 15px;
+}
+
+.order-name 
+{
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  
+}
+
+.order-meta 
+{
+  margin: 0;
+  color: white;
+  font-size: 20px;
+}
+
+.order-total 
+{
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  align-items: baseline;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.order-total-label 
+{
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.order-total-value 
+{
+  font-size: 20px;
+  font-weight: 800;
+  color: whitesmoke;
+}
+
+.order-empty 
+{
+  text-align: center;
+  color: white;
+  padding: 40px 0;
+}
+
+@media (max-width: 560px) 
+{
+  .order-item 
+  { 
+    align-items: flex-start; 
+  }
+
+  .order-image 
+  { 
+    width: 64px; 
+    height: 64px; 
+  }
+}

@@ -1,0 +1,431 @@
+.footer-root 
+{
+  background: #020227;
+  color: #f0eefe;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 32px 0 0 0;
+  font-size: 15px;
+}
+
+.footer-grid 
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto 32px auto;
+  padding: 0 32px;
+}
+
+.footer-block 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-heading 
+{
+  font-size: 1.07rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.footer-heading::after 
+{
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: #b56eff;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.footer-brand-row 
+{
+  display: flex;
+  gap: 12px;
+}
+
+.brand-mark 
+{
+  background: #ff6600;
+  color: white;
+  font-weight: 700;
+  font-size: 1.24rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-desc 
+{
+  margin: 0;
+  color: #c6bacf;
+  font-size: 0.97rem;
+  line-height: 1.3;
+}
+
+.footer-list 
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+}
+
+.footer-list li a 
+{
+  color: #c0bdd9;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+}
+
+.footer-list li a:hover 
+{
+  color: #ff6600;
+  text-decoration: underline;
+}
+
+.newsletter-tag 
+{
+  color: #beb9d4;
+  font-size: 0.97rem;
+  margin-bottom: 7px;
+}
+
+.newsletter-form 
+{
+  display: flex;
+  gap: 9px;
+}
+
+.newsletter-form input[type="email"] 
+{
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  outline: 1.5px solid #b56eff;
+  background: #020227;
+  color: #fff;
+}
+
+.newsletter-form input[type="email"]:focus 
+{
+  outline: 2px solid #ff6600;
+}
+
+.newsletter-form button 
+{
+  background:#fa9900;
+  color: #fff;
+  border: none;
+  padding: 0 1px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  min-width: 110px;
+  transition: background 0.3s;
+  height: 35px;
+}
+
+.newsletter-form button:hover,
+.newsletter-form button:focus 
+{
+  background:orangered;
+}
+
+.newsletter-hint 
+{
+  font-size: 0.85rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.footer-bottom-grid 
+{
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 32px 12px 32px;
+  border-top: 1.5px solid #362850;
+  font-size: 0.97em;
+  background: #020227;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-bottom-links 
+{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a 
+{
+  color: #bcb3d6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover 
+{
+  color: #ff6600;
+  text-decoration: underline;
+}
+
+.footer-bottom-links span 
+{
+  -webkit-user-select: none;
+  user-select: none;
+  color: #8359e4;
+  font-weight: bold;
+}
+
+.footer-copyright 
+{
+  color: #c7bbd9;
+  text-align: center;
+}
+
+.footer-social-row 
+{
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.social-btn 
+{
+  color: #eee;
+  background-color: #333;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.social-btn:hover,
+.social-btn:focus 
+{
+  background-color: #ff6600;
+  color: white;
+}
+
+.social-btn svg 
+{
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+@media (max-width: 900px) 
+{
+  .footer-grid 
+  {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 22px 16px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .footer-bottom-grid 
+  {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px 10px 9px 10px;
+  }
+
+  .footer-block 
+  {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 600px) 
+{
+  .footer-root 
+  {
+    font-size: 14px;
+    padding: 16px 0 0 0;
+  }
+  .footer-grid 
+  {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 7vw 3vw;
+    padding: 0 5vw;
+  }
+  .footer-list 
+  {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+  .newsletter-form 
+  {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .newsletter-form input[type="email"],
+  .newsletter-form button 
+  {
+    width: 100%;
+    min-width: 0;
+  }
+  .footer-bottom-grid 
+  {
+    grid-template-columns: 1fr;
+    gap: 2vw;
+    padding: 9px 5vw 8px 5vw;
+    text-align: left;
+    font-size: 0.89em;
+  }
+  .footer-social-row 
+  {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 900px) 
+{
+  .footer-root 
+  {
+    font-size: 14px;
+    padding: 12px 0 0 0;
+  }
+
+  .footer-grid 
+  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;    /* 2 columns */
+    grid-template-rows: 1fr 1fr;       /* 2 rows */
+    gap: 20px 12px;
+    padding: 0 5vw;
+    max-width: 100%;
+  }
+
+  .footer-block 
+  {
+    padding: 0 2vw;
+    gap: 8px;
+    min-width: 0;     /* prevents overflow */
+  }
+
+  .footer-heading 
+  {
+    font-size: 1.01rem;
+    margin-bottom: 4px;
+  }
+
+  .footer-heading::after 
+  {
+    width: 24px;
+    height: 3px;
+    margin-top: 4px;
+  }
+
+  .footer-brand-row 
+  {
+    gap: 10px;
+  }
+
+  .brand-mark 
+  {
+    font-size: 1rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+
+  .brand-desc 
+  {
+    font-size: 0.95rem;
+  }
+
+  .footer-list 
+  {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    font-size: 0.97em;
+  }
+
+  .newsletter-form 
+  {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .newsletter-form input[type="email"],
+  .newsletter-form button 
+  {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .newsletter-form input[type="email"] 
+  {
+    padding: 8px;
+    font-size: 0.97rem;
+  }
+
+  .newsletter-form button 
+  {
+    min-width: unset;
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+
+  .newsletter-hint 
+  {
+    font-size: 0.82rem;
+    margin-top: 0;
+  }
+
+  .footer-bottom-grid 
+  {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px 5vw 7px 5vw;
+    text-align: left;
+    border-top: 1px solid #362850;
+    font-size: 0.89em;
+  }
+
+  .footer-bottom-links 
+  {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .footer-social-row 
+  {
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 6px;
+  }
+}

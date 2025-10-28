@@ -1,0 +1,89 @@
+.bigbillion-container 
+{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a192f, #172a45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.section 
+{
+  transform: translateY(40px);
+  text-align: center;
+}
+
+.counter 
+{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.box 
+{
+  padding: 40px 30px;
+  text-align: center;
+  background-color: orange;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.box h1 
+{
+  font-size: 42px;
+  color: red;
+}
+
+.box small 
+{
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.wait 
+{
+  font-size: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.newyear 
+{
+  font-size: 40px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.section p 
+{
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) 
+{
+  .box 
+  {
+    padding: 25px 20px;
+  }
+  .section p 
+  {
+    font-size: 32px;
+  }
+  .wait,
+  .newyear 
+  {
+    font-size: 28px;
+  }
+}
