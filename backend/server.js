@@ -1,13 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const seedProducts = require('./seed');
 require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+app.get("/seed", async (req, res) => {
+  await seedProducts();
+  res.send("Products seeded!");
+});
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
