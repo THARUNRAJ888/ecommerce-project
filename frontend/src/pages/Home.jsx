@@ -4,6 +4,7 @@ import '../styles/Home.css';
 import BannerSlider from '../components/BannerCarousel';
 import Instagrambtn from './Instagrambtn';
 import Whatsappbtn from "./Whatsappbtn";
+import API_BASE_URL from '../apiBase';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -25,8 +26,10 @@ export default function Home() {
       try {
         setLoading(true);
         const [resMH, resS] = await Promise.all([
-          fetch('/api/v1/products?categories=medicine,homeopathy'),
-          fetch('/api/v1/products?categories=sarees'),
+          fetch(`${API_BASE_URL}/api/v1/products?categories=medicine,homeopathy`),
+          fetch(`${API_BASE_URL}/api/v1/products?categories=sarees`), 
+         // fetch('/api/v1/products?categories=medicine,homeopathy'),
+         // fetch('/api/v1/products?categories=sarees'),
         ]);
         const [dataMH, dataS] = await Promise.all([resMH.json(), resS.json()]);
         const all = [

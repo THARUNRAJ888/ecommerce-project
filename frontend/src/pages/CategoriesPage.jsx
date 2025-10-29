@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/CategoriesPage.css';
 import SizeGuideButton from './SizeGuideButton';
+import API_BASE_URL from '../apiBase';
 
 export default function CategoriesPage() {
   const [products, setProducts] = useState([]);
@@ -22,7 +23,8 @@ export default function CategoriesPage() {
   const search = query.get('search');
 
   useEffect(() => {
-    const base = '/api/v1/products';
+    const base = `${API_BASE_URL}/api/v1/products`;
+    //const base = '/api/v1/products';
     let url = base;
     if (category) {
       url += `?category=${encodeURIComponent(category)}`;

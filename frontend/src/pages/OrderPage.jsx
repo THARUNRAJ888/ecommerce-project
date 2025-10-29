@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import '../styles/OrderPage.css';
+import API_BASE_URL from '../apiBase';
 
 export default function OrderPage() {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,8 @@ export default function OrderPage() {
       return;
     }
 
-    fetch('/api/v1/orders', {
+    //fetch('/api/v1/orders', 
+    fetch(`${API_BASE_URL}/api/v1/orders`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => {
