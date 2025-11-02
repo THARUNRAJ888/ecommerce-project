@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/CategoriesPage.css';
 import SizeGuideButton from './SizeGuideButton';
-import API_BASE_URL from '../apiBase';
+import API_BASE_URL from '../apibase';
 
 export default function CategoriesPage() {
   const [products, setProducts] = useState([]);

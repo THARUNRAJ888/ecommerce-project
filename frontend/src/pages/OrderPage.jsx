@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import '../styles/OrderPage.css';
-import API_BASE_URL from '../apiBase';
+import API_BASE_URL from '../apibase';
 
 export default function OrderPage() {
   const [orders, setOrders] = useState([]);

@@ -4,7 +4,7 @@ import '../styles/Home.css';
 import BannerSlider from '../components/BannerCarousel';
 import Instagrambtn from './Instagrambtn';
 import Whatsappbtn from "./Whatsappbtn";
-import API_BASE_URL from '../apiBase';
+import API_BASE_URL from '../apibase';
 
 export default function Home() {
   const [products, setProducts] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/search.css';
-import API_BASE_URL from '../apiBase';
+import API_BASE_URL from '../apibase';
 
 const categories = [
   { name: 'Home Accessories', slug: 'home-accessories' },
