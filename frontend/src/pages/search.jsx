@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/search.css';
-import API_BASE_URL from '../apibase';
 
 const categories = [
   { name: 'Home Accessories', slug: 'home-accessories' },
@@ -37,8 +36,7 @@ export default function BlankPage() {
     setError(null);
 
   
-    //const base = '/api/v1/products';
-    const base = `${API_BASE_URL}/api/v1/products`;
+    const base = '/api/v1/products';
     const url = categoriesParam
       ? `${base}?search=${encodeURIComponent(searchTerm)}&categories=${encodeURIComponent(categoriesParam)}`
       : `${base}?search=${encodeURIComponent(searchTerm)}`;

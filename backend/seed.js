@@ -2842,26 +2842,9 @@ const products = [
 ];
 
 async function seedProducts() {
-  const { getMongoURI, containsPlaceholder } = require('./config/db');
-
-  let url = getMongoURI();
-  if (!url) {
-    console.warn('No remote Mongo URI built from env; falling back to local MongoDB for seeding.');
-    url = 'mongodb://localhost:27017/ecommerce';
-  }
-
-  // Fail fast with a clear message if the developer didn't replace placeholders.
-  if (containsPlaceholder(url)) {
-    console.error('\nERROR: MONGO_URI is not set or contains a placeholder password.');
-    console.error('Update `backend/.env` with a valid MongoDB connection string or set MONGO_USER/MONGO_PASS.');
-    console.error('Example:');
-    console.error("  MONGO_URI=mongodb+srv://username:password@cluster0.tkqidqm.mongodb.net/ecommerce?retryWrites=true&w=majority\n");
-    process.exit(1);
-  }
-
+  const url = process.env.MONGO_URI || 'mongodb+srv://tharun:7845@cluster0.tkqidqm.mongodb.net/ecommerce?retryWrites=true&w=majority';
   try {
-    // Mongoose v6+ / MongoDB driver v4+ do not need legacy options.
-    await mongoose.connect(url);
+    await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('✅ MongoDB connected for seeding');
 
     await Product.deleteMany({});
