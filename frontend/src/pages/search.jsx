@@ -36,7 +36,7 @@ export default function BlankPage() {
     setError(null);
 
   
-    const base = '/api/v1/products';
+    const base = 'http://localhost:5000/api/v1/products';
     const url = categoriesParam
       ? `${base}?search=${encodeURIComponent(searchTerm)}&categories=${encodeURIComponent(categoriesParam)}`
       : `${base}?search=${encodeURIComponent(searchTerm)}`;

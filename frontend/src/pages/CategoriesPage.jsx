@@ -22,7 +22,7 @@ export default function CategoriesPage() {
   const search = query.get('search');
 
   useEffect(() => {
-    const base = '/api/v1/products';
+    const base = 'http://localhost:5000/api/v1/products';
     let url = base;
     if (category) {
       url += `?category=${encodeURIComponent(category)}`;

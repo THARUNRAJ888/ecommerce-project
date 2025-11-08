@@ -13,7 +13,7 @@ export default function OrderPage() {
       return;
     }
 
-    fetch('/api/v1/orders', {
+    fetch('http://localhost:5000/api/v1/orders', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => {

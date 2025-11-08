@@ -13,13 +13,13 @@ export const AuthProvider = ({ children }) => {
       }}, []);
 
   const login = async (email, password) => {
-    const { data } = await axios.post('/api/v1/auth/login', { email, password });
+    const { data } = await axios.post('http://localhost:5000/api/v1/auth/login', { email, password });
     localStorage.setItem('token', data.token);
     setUser(data.user);
   };
 
   const signup = async (username, email, password) => {
-    const { data } = await axios.post('/api/v1/auth/signup', { username, email, password });
+    const { data } = await axios.post('http://localhost:5000/api/v1/auth/signup', { username, email, password });
     localStorage.setItem('token', data.token);
     setUser(data.user);
   };
