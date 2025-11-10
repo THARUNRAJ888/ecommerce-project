@@ -8,8 +8,8 @@ const helmet = require('helmet');
 app.use(helmet());
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 mins
-  max: 200,                  // 200 requests per IP per window
+  windowMs: 15 * 60 * 1000, 
+  max: 200,                  
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -35,7 +35,7 @@ const allowed = [
 ];
 
 const errorHandler = require('./middleware/errorHandler');
-app.use(errorHandler);
+
 
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
@@ -59,10 +59,25 @@ app.get('/', (req, res) => {
   res.send('API running');
 });
 
-app.get('/health', (req, res) => {
-  const dbOk = (require('mongoose').connection.readyState === 1);
-  res.json({ status: 'ok', db: dbOk ? 'connected' : 'disconnected' });
+app.get('/health', async (req, res) => {
+  try {
+    const mongoose = require('mongoose');
+    const connState = mongoose.connection.readyState; 
+    const dbConnected = connState === 1;
+
+    return res.json({
+      status: 'ok',
+      db: dbConnected ? 'connected' : 'disconnected',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Healthcheck failed:', err);
+    return res.status(500).json({ status: 'error', message: 'healthcheck failed' });
+  }
 });
+
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
