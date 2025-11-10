@@ -5,6 +5,8 @@ export default function OrderPage() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1';
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -13,7 +15,7 @@ export default function OrderPage() {
       return;
     }
 
-    fetch('http://localhost:5000/api/v1/orders', {
+    fetch(`${API_BASE}/orders`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => {
@@ -21,11 +23,13 @@ export default function OrderPage() {
         return r.json();
       })
       .then((data) => setOrders(Array.isArray(data) ? data : []))
-      .catch(() => setOrders([]))
+      .catch((err) => {
+        console.error('Error fetching orders:', err);
+        setOrders([]);
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [API_BASE]);
 
- 
   const sorted = useMemo(
     () =>
       orders.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
@@ -37,7 +41,6 @@ export default function OrderPage() {
       <center>
         <h2 className="order-title">Your Orders</h2>
       </center>
-      
 
       {loading && <p className="order-empty">Loading orders…</p>}
       {!loading && !sorted.length && <p className="order-empty">No orders yet.</p>}
@@ -47,9 +50,10 @@ export default function OrderPage() {
           <section key={order._id} className="order-section">
             <div className="order-header">
               <div>
-                <h3 className="order-id">Order no: #{order._id.slice(-6)}</h3>
-                <p className="order-date">Date/Time:  
-                   {order.createdAt ? new Date(order.createdAt).toLocaleString() : '—'}
+                <h3 className="order-id">Order no: #{order._id?.slice(-6)}</h3>
+                <p className="order-date">
+                  Date/Time:{' '}
+                  {order.createdAt ? new Date(order.createdAt).toLocaleString() : '—'}
                 </p>
               </div>
               <div className="order-header-total">
@@ -66,7 +70,7 @@ export default function OrderPage() {
                   const p = line.product || {};
                   const name = p.name || line.name || 'Product';
                   const imageUrl = p.imageUrl || line.imageUrl;
-                  const price = p.price ?? line.price; 
+                  const price = p.price ?? line.price;
                   return (
                     <div key={p._id || idx} className="order-item">
                       <img

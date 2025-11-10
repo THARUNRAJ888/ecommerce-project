@@ -20,13 +20,15 @@ export default function Home() {
 
   const navigate = useNavigate();
 
+  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1';
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
         const [resMH, resS] = await Promise.all([
-          fetch('http://localhost:5000/api/v1/products?categories=medicine,homeopathy'),
-          fetch('http://localhost:5000/api/v1/products?categories=sarees'),
+          fetch(`${API_BASE}/products?categories=medicine,homeopathy`),
+          fetch(`${API_BASE}/products?categories=sarees`),
         ]);
         const [dataMH, dataS] = await Promise.all([resMH.json(), resS.json()]);
         const all = [
@@ -42,7 +44,7 @@ export default function Home() {
       }
     };
     fetchProducts();
-  }, []);
+  }, [API_BASE]);
 
   const normalizeCategory = (v) => (v || '').toLowerCase();
 

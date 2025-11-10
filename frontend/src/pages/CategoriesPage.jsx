@@ -21,9 +21,10 @@ export default function CategoriesPage() {
   const category = query.get('category');
   const search = query.get('search');
 
+  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1';
+
   useEffect(() => {
-    const base = 'http://localhost:5000/api/v1/products';
-    let url = base;
+    let url = `${API_BASE}/products`;
     if (category) {
       url += `?category=${encodeURIComponent(category)}`;
     } else if (search) {
@@ -35,7 +36,7 @@ export default function CategoriesPage() {
       .then(data => setProducts(Array.isArray(data) ? data : []))
       .catch(() => setProducts([]))
       .finally(() => setLoading(false));
-  }, [category, search]);
+  }, [category, search, API_BASE]);
 
   const normalizeCategory = (v) => (v || '').toLowerCase();
 
