@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Frontend build
+      - name: Build frontend
+        working-directory: ecommerceproject/frontend
+        run: |
+          npm ci
+          npm run build
+
+      # Backend install + (optional) tests
+      - name: Install backend
+        working-directory: ecommerceproject/backend
+        run: |
+          npm ci
+          # npm test || true  # enable when you add tests
