@@ -27,8 +27,8 @@ export default function Home() {
       try {
         setLoading(true);
         const [resMH, resS] = await Promise.all([
-          fetch(`${API_BASE}products?categories=medicine,homeopathy`),
-          fetch(`${API_BASE}products?categories=sarees`),
+          fetch(`${API_BASE}/products?categories=medicine,homeopathy`),
+          fetch(`${API_BASE}/products?categories=sarees`),
         ]);
         const [dataMH, dataS] = await Promise.all([resMH.json(), resS.json()]);
         const all = [
