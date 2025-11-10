@@ -1,12 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin(origin, cb) {
+    if (!origin || allowed.includes(origin)) return cb(null, true);
+    return cb(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 
+const allowed = [
+  'https://tharun-getroost.netlify.app/',
+  'http://localhost:5173', 
+];
+
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
 
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
