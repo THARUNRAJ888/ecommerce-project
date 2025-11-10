@@ -5,20 +5,23 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 
-app.use(helmet());
-
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, 
   max: 200,                  
   standardHeaders: true,
   legacyHeaders: false,
 });
-app.use(limiter);
 
 require('dotenv').config();
 
 const app = express();
+const allowed = [
+  'https://tharun-getroost.netlify.app/',
+  'http://localhost:5173', 
+];
 
+app.use(limiter);
+app.use(express.json());
 app.use(cors({
   origin(origin, cb) {
     if (!origin || allowed.includes(origin)) return cb(null, true);
@@ -26,13 +29,7 @@ app.use(cors({
   },
   credentials: true,
 }));
-
-app.use(express.json());
-
-const allowed = [
-  'https://tharun-getroost.netlify.app/',
-  'http://localhost:5173', 
-];
+app.use(helmet());
 
 const errorHandler = require('./middleware/errorHandler');
 
