@@ -17,6 +17,8 @@ export default function PaymentPage() {
   const [cardholderName, setCardholderName] = useState('');
   const [billingAddress, setBillingAddress] = useState('');
 
+  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1';
+
   const handleProcess = (e) => {
     e.preventDefault();
     setShowConfirm(true);
@@ -32,9 +34,11 @@ export default function PaymentPage() {
       navigate('/signup');
       return;
     }
+
     try {
       let orderProducts, totalAmount;
-      if (products) {
+
+      if (Array.isArray(products) && products.length) {
         orderProducts = products.map(p => ({
           product: p._id || p.id,
           quantity: p.quantity || 1,
@@ -42,7 +46,7 @@ export default function PaymentPage() {
           imageUrl: p.imageUrl,
           price: p.price
         }));
-        totalAmount = products.reduce((sum, p) => sum + p.price * (p.quantity || 1), 0);
+        totalAmount = products.reduce((sum, p) => sum + Number(p.price || 0) * Number(p.quantity || 1), 0);
       } else if (product) {
         orderProducts = [{
           product: product._id || product.id,
@@ -51,26 +55,27 @@ export default function PaymentPage() {
           imageUrl: product.imageUrl,
           price: product.price
         }];
-        totalAmount = (product.price || 0) * (product.quantity || 1);
+        totalAmount = Number(product.price || 0) * Number(product.quantity || 1);
+      } else {
+        alert('No items to purchase.');
+        setIsProcessing(false);
+        return;
       }
 
       localStorage.setItem('lastOrder', JSON.stringify({ products: orderProducts, totalAmount }));
 
-      await axios.post('/api/v1/orders',
-        { 
-          products: orderProducts, 
-          totalAmount, 
-          payment: {
-            cardNumber,
-            expiryDate,
-            cvv,
-            cardholderName,
-            billingAddress
-          }
+      await axios.post(
+        `${API_BASE}/orders`,
+        {
+          products: orderProducts,
+          totalAmount,
+          paymentRef: `CARD-${cardNumber.slice(-4)}`
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
       alert('Payment successful!');
+      setCardNumber(''); setExpiryDate(''); setCvv(''); setCardholderName(''); setBillingAddress('');
       navigate('/orders');
     } catch (error) {
       alert('Payment failed! ' + (error.response?.data?.message || error.message));
@@ -93,6 +98,8 @@ export default function PaymentPage() {
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
               required
+              autoComplete="cc-number"
+              inputMode="numeric"
             />
           </div>
           <div className="payment-row">
@@ -104,6 +111,8 @@ export default function PaymentPage() {
               value={expiryDate}
               onChange={(e) => setExpiryDate(e.target.value)}
               required
+              autoComplete="cc-exp"
+              inputMode="numeric"
             />
           </div>
           <div className="payment-row">
@@ -115,6 +124,8 @@ export default function PaymentPage() {
               value={cvv}
               onChange={(e) => setCvv(e.target.value)}
               required
+              autoComplete="cc-csc"
+              inputMode="numeric"
             />
           </div>
           <div className="payment-row">
@@ -126,6 +137,7 @@ export default function PaymentPage() {
               value={cardholderName}
               onChange={(e) => setCardholderName(e.target.value)}
               required
+              autoComplete="cc-name"
             />
           </div>
           <div className="payment-row">
@@ -137,13 +149,10 @@ export default function PaymentPage() {
               value={billingAddress}
               onChange={(e) => setBillingAddress(e.target.value)}
               required
+              autoComplete="billing street-address"
             />
           </div>
-          <button
-            type="submit"
-            disabled={isProcessing}
-            className="process-btn"
-          >
+          <button type="submit" disabled={isProcessing} className="process-btn">
             {isProcessing ? "Processing..." : "Process"}
           </button>
         </form>
