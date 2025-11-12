@@ -27,7 +27,6 @@ export default function SiteFooter() {
             <li><a href="/categories?category=electronics">Electronics</a></li>
             <li><a href="/categories?category=fashion">Fashion</a></li>
             <li><a href="/about">About us</a></li>
-            <li><a href="/careers">Careers</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>

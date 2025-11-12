@@ -76,7 +76,6 @@ export default function BlogPage() {
               <p className="blog-excerpt">{post.excerpt}</p>
               <div className="blog-meta">
                 <span>{new Date(post.date).toLocaleDateString()}</span>
-                <a href={`/blog/${post.id}`} className="read-more">Read more →</a>
               </div>
             </div>
           </article>
